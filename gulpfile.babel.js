@@ -1,10 +1,11 @@
+import browserSync from 'browser-sync';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
 
 gulp.task('styles', () => {
-  return gulp.src('src/*.scss')
+  return gulp.src('src/main.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
@@ -15,4 +16,14 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('dist/'))
 });
 
-gulp.task('default', ['styles']);
+gulp.task('serve', () => {
+  browserSync({
+    notify: false,
+    port: 3000,
+    server: {
+      baseDir: ['dist']
+    }
+  });
+});
+
+gulp.task('default', ['styles', 'serve']);
