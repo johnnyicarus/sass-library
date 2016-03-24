@@ -20,3 +20,7 @@ Grid
 (3)
 - Author Name
 - Post Title
+- Search Widget in Nav Bar
+
+Parameters
+- Breakpoints
